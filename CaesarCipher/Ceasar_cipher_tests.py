@@ -7,22 +7,30 @@ class TestCaesarCipher(unittest.TestCase):
     def setUp(self):
         self.cipher = CaesarCipher('ru')
 
-    def test_encryptor_with_key(self):
+    def test_cipher_with_key(self):
+        # Проверка функции-шифратора
         text = "Привет, мир!"
         key = 10
-        encrypted_text = self.cipher.encryptor(text, key)
-        self.assertEqual(encrypted_text, "Щътлоь, цтъ!")
+        cipher_text = self.cipher.cipher(text, key)
+        self.assertEqual(cipher_text, "Щътлоь, цтъ!")
 
-    def test_encryptor_without_key(self):
+    def test_cipher_without_key(self):
+        # Проверка функции-шифратора без ключа
         text = "Привет, мир!"
-        encrypted_text = self.cipher.encryptor(text)
-        self.assertNotEqual(encrypted_text, "Привет, мир!")
+        cipher_text = self.cipher.cipher(text)
+        self.assertNotEqual(cipher_text, "Привет, мир!")
 
-    def test_decryptor(self):
-        encrypted_text = "Щътлоь, цтъ!"
+    def test_decipher(self):
+        # Проверка функции-дешифратора с переданным ключом
+        cipher_text = "Щътлоь, цтъ!"
         key = 10
-        decrypted_text = self.cipher.decryptor(encrypted_text, key)
-        self.assertEqual(decrypted_text, "Привет, мир!")
+        decipher_text = self.cipher.decipher(cipher_text, key)
+        self.assertEqual(decipher_text, "Привет, мир!")
+
+    def test_decrypt(self):
+        cipher_text = 'Хцозкш, тоц!'
+        decrypt_list = self.cipher.decrypt(cipher_text)
+        self.assertTrue('Текст со сдвигом в 6: привет, мир!' in decrypt_list)
 
 
 if __name__ == '__main__':

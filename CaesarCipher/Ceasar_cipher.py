@@ -2,15 +2,19 @@ from random import randint
 
 
 class CaesarCipher:
-    def __init__(self, lang):
-        if lang.lower() == 'ru':
-            self.lower_dict, self.upper_dict = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",\
-                "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+    def __init__(self, alphabet, voluntary=False):
+        if voluntary:
+            self.lower_dict = input('Введите Ваш алфавит в строчном виде')
+            self.upper_dict = self.lower_dict.upper()
         else:
-            self.lower_dict, self.upper_dict = "abcdefghijklmnopqrstuvwxyz", \
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            if alphabet.lower() == 'ru':
+                self.lower_dict, self.upper_dict = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",\
+                    "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+            else:
+                self.lower_dict, self.upper_dict = "abcdefghijklmnopqrstuvwxyz", \
+                    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-    def encryptor(self, text: str, key: int = None):
+    def cipher(self, text: str, key: int = None):
         """
         Возвращает зашифрованный с помощью шифра Цезаря текст.
         Шифрует только буквы алфавита выбранного языка.
@@ -34,7 +38,8 @@ class CaesarCipher:
 
         return ''.join(text)
 
-    def decryptor(self, text, key):
+    def decipher(self, text, key):
+        # Метод-дешифратор с ключом
         text = list(text)
         for i in range(len(text)):
             if text[i].islower():
@@ -46,5 +51,24 @@ class CaesarCipher:
 
         return ''.join(text)
 
+    def decrypt(self, ciphertext):
+        """
+        Функция-дешифрование перебором ключа.
+        :param ciphertext: Зашифрованный текст.
+        :return: Массив текстов с перебором ключей.
+        """
+        # Обработка зашифрованного текса - приводим все символы в lowercase
+        ciphertext = [el.lower() for el in ciphertext]
+        # Если текст слишком большой - обрезаем его
+        if len(ciphertext) > 50:
+            ciphertext = ciphertext[:50]
+
+        res = []
+        for key in range(len(self.lower_dict)):
+            res.append(f'Текст со сдвигом в {key}' + ': ' + self.decipher(ciphertext, key))
+
+        return res
 
 
+c = CaesarCipher('ru')
+print(c.decrypt('Хцозкш тоц!'))
