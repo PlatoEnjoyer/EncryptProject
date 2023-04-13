@@ -53,7 +53,7 @@ class CaesarCipher:
 
     def decrypt(self, ciphertext):
         """
-        Функция-дешифрование перебором ключа.
+        Метод-дешифратор без ключа.
         :param ciphertext: Зашифрованный текст.
         :return: Массив текстов с перебором ключей.
         """
