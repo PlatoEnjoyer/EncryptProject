@@ -34,7 +34,8 @@ class VigenereCipher:
         return res
 
     def vigenere_decipher(self, text, key):
-        # Работает так же как и шифратор, общая формула дешифровки - Mi = (Ci - Ki) mod len(alphabet)
+        # Работает так же как и шифратор, только в обратную сторону
+        # Общая формула дешифровки - Mi = (Ci - Ki) mod len(alphabet)
         res = ''
         key = key.lower()
 
@@ -48,3 +49,8 @@ class VigenereCipher:
             else:
                 res += char
         return res
+
+
+
+v = VigenereCipher('ru')
+print(v.vigenere_cipher('люблю дашулика касинского', 'чмок'))
