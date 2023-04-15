@@ -24,39 +24,55 @@ if __name__ == '__main__':
 
     if args.caesar_plaintext:
         values = process_values(args.caesar_plaintext)
+        with open(values[1], 'r') as file:
+            text = file.read()
         caesar = CaesarCipher(values[0])
-        print(caesar.cipher(values[1]))
+        print(caesar.cipher(text))
 
     elif args.caesar_ciphertext:
         values = process_values(args.caesar_ciphertext)
+        with open(values[1], 'r') as file:
+            text = file.read()
         caesar = CaesarCipher(values[0])
         print(caesar.decipher(values[1], int(values[2])))
 
     elif args.caesar_plaintext_with_key:
         values = process_values(args.caesar_plaintext_with_key)
+        with open(values[1], 'r') as file:
+            text = file.read()
         caesar = CaesarCipher(values[0])
         print(caesar.cipher(values[1], int(values[2])))
 
     elif args.caesar_ciphertext_without_key:
         values = process_values(args.caesar_ciphertext_without_key)
+        with open(values[1], 'r') as file:
+            text = file.read()
         caesar = CaesarCipher(values[0])
         print(caesar.decrypt(values[1]))
 
     elif args.vernam_plaintext:
-        vernam = vernam_cipher(args.vernam_plaintext)
+        with open(args.vernam_plaintext, 'r') as file:
+            text = file.read()
+        vernam = vernam_cipher(text)
         print(vernam)
 
     elif args.vernam_ciphertext:
         values = process_values(args.vernam_ciphertext)
+        with open(values[1], 'r') as file:
+            text = file.read()
         vernam = vernam_decipher(values[0], values[1])
         print(vernam)
 
     elif args.vigenere_plaintext:
         values = process_values(args.vigenere_plaintext)
+        with open(values[1], 'r') as file:
+            text = file.read()
         vigenere = VigenereCipher(values[0])
         print(vigenere.vigenere_cipher(values[1], values[2]))
 
     elif args.vigenere_ciphertext:
         values = process_values(args.vigenere_ciphertext)
+        with open(values[1], 'r') as file:
+            text = file.read()
         vigenere = VigenereCipher(values[0])
         print(vigenere.vigenere_decipher(values[1], values[2]))
