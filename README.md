@@ -24,7 +24,6 @@ Vigenere Cipher:
 --vigenere_encrypt - requires three arguments - the encryption key, the path to the plaintext file, and the key for the cipher.
 --vigenere_decrypt - requires three arguments - the decryption key, the path to the ciphertext file, and the key for the cipher.
 
-Examples
 Here are some examples of how to use the program:
 
 python encryption_decryption.py --caesar_encrypt 5 plaintext.txt
