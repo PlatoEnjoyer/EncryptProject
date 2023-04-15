@@ -5,7 +5,7 @@ from VigenereCipher.Vigenere_cipher import VigenereCipher
 
 
 def process_values(values):
-    return values.split(' ')
+    return values.split('--')
 
 
 if __name__ == '__main__':
