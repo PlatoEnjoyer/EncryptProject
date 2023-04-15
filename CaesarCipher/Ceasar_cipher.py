@@ -23,7 +23,7 @@ class CaesarCipher:
         :return: Возвращает зашифрованный текст
         """
         if not key:
-            key = randint(1, len(self.lower_dict))
+            key = randint(1, len(self.lower_dict) - 1)
             print(f'Ваш случайно сгенерированный ключ: {key}')
         text = list(text)
         for i in range(len(text)):
@@ -67,8 +67,7 @@ class CaesarCipher:
         for key in range(len(self.lower_dict)):
             res.append(f'Текст со сдвигом в {key}' + ': ' + self.decipher(ciphertext, key))
 
-        return res
+        for el in res:
+            print(el)
 
-
-c = CaesarCipher('ru')
-print(c.decrypt('Хцозкш тоц!'))
+        return 'Найдите в сдвигах, представленных выше, текст, который поймете'

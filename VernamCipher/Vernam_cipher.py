@@ -21,7 +21,7 @@ def vernam_cipher(message):
     for i in range(len(binary_message)):
         cipher += str(int(binary_message[i]) ^ int(binary_key[i]))
 
-    return cipher, key
+    return f'Ваш зашифрованный текст - {cipher} \nВаш ключ - {key}'
 
 
 def vernam_decipher(cipher_text, key):

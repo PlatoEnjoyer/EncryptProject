@@ -49,8 +49,3 @@ class VigenereCipher:
             else:
                 res += char
         return res
-
-
-
-v = VigenereCipher('ru')
-print(v.vigenere_cipher('люблю дашулика касинского', 'чмок'))
